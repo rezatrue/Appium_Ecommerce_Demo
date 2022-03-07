@@ -14,7 +14,11 @@ public class App extends Base{
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		
 		UserForm form = new UserForm(driver);
-		form.fillUp();
+		// Form Automation
+		//form.fillUp();
+		// Form Submission failed
+		System.out.println(form.errorMsg());
+		
 
 
 	}
