@@ -15,11 +15,12 @@ public class App extends Base{
 		
 		UserForm form = new UserForm(driver);
 		// Form Automation
-		//form.fillUp();
+		form.fillUp();
 		// Form Submission failed
-		System.out.println(form.errorMsg());
+		//System.out.println(form.errorMsg());
 		
-
+		ProductList productList = new ProductList(driver);
+		productList.addToCart("PG 3");
 
 	}
 
