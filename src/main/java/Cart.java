@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
 
+import io.appium.java_client.MobileDriver;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
@@ -61,10 +62,10 @@ public class Cart {
 //			.moveTo(PointOption.point(startX, 50))
 //			.release();
 //		touchAction.perform();
-		
-		touchAction.longPress(PointOption.point(startX, 100))
-		.moveTo(PointOption.point(startX, 50)).release().perform();
-		
+		String visibleText= "Air Jordan 1 Mid SE";
+		driver.findElementByAndroidUIAutomator(
+				"new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\""+visibleText+"\").instance(0))");
+
 	}
 	
 	public void calculateAllProductCast() {
