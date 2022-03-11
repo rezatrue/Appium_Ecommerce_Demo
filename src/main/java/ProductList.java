@@ -32,7 +32,10 @@ public class ProductList {
 				break;
 			}
 		}
-		driver.findElement(By.id("com.androidsample.generalstore:id/appbar_btn_cart")).click();
+		
 	}
 	
+	public void openCart() {
+		driver.findElement(By.id("com.androidsample.generalstore:id/appbar_btn_cart")).click();
+	}
 }

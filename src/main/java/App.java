@@ -21,7 +21,15 @@ public class App extends Base{
 		
 		ProductList productList = new ProductList(driver);
 		productList.addToCart("PG 3");
-
+		//productList.addToCart("Converse All Star");
+		productList.addToCart("Air Jordan 1 Mid SE");
+		productList.openCart();
+		
+		Cart cart = new Cart(driver);
+		cart.calculateAllProductCast();
+		System.out.println("App Total: " + cart.getTotalAmount());
+		System.out.println("Sum: " + cart.cumulativeSum);
+		
 	}
 
 }
