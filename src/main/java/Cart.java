@@ -4,13 +4,14 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
+import org.openqa.selenium.WebElement;
 
-import io.appium.java_client.MobileDriver;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
-import io.appium.java_client.touch.WaitOptions;
-import io.appium.java_client.touch.offset.PointOption;
+import io.appium.java_client.touch.LongPressOptions;
+import io.appium.java_client.touch.TapOptions;
+import io.appium.java_client.touch.offset.ElementOption;
 
 public class Cart {
 
@@ -102,6 +103,29 @@ public class Cart {
 		lastElementName = lastNewElementName;
 		System.out.println(sum);
 		return sum;
+	}
+	
+	public void completePurchase() {
+
+		TouchAction<?> touchAction = new TouchAction<>(driver);
+		TapOptions tapOptions = new TapOptions();
+		ElementOption elementOption = new ElementOption();
+		
+		WebElement checkBox = driver.findElement(By.className("android.widget.CheckBox"));
+		touchAction.tap(tapOptions.withElement(elementOption.withElement(checkBox))).perform();
+		
+		WebElement conditions = driver.findElement(By.xpath("//*[@text='Please read our terms of conditions']"));
+		LongPressOptions longPressOptions = new LongPressOptions();
+		touchAction.longPress(longPressOptions.withElement(elementOption.withElement(conditions))
+				.withDuration(Duration.ofSeconds(2))).release().perform();
+		
+		
+		WebElement closeBtn = driver.findElement(By.xpath("//android.widget.Button[@text='CLOSE']"));
+		closeBtn.click();
+		driver.manage().timeouts().implicitlyWait(1000, TimeUnit.MILLISECONDS);
+		WebElement proceedBtn = driver.findElement(By.id("com.androidsample.generalstore:id/btnProceed"));
+		proceedBtn.click();
+		
 	}
 	
 }
