@@ -1,6 +1,8 @@
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.remote.DesiredCapabilities;
 
@@ -25,7 +27,18 @@ public class Base {
 		return driver;
 	}
 
-	
+	public static void printContexts(AndroidDriver<AndroidElement> driver) {
+		try {
+			Thread.sleep(7000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		Set<String> contextNames = driver.getContextHandles();
+		for (String contextName : contextNames) {
+		    System.out.println(contextName); //prints out something like NATIVE_APP \n WEBVIEW_1
+		}
+		//driver.context(contextNames.toArray()[1]); // set context to WEBVIEW_1
+	}
 	
 	
 }
