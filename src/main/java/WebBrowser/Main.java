@@ -28,7 +28,7 @@ public class Main extends Base{
 		while(it.hasNext()) {
 			AndroidElement e = it.next();
 			String product =  e.findElement(By.xpath("./div/div/a")).getText();
-			String price = e.findElement(By.xpath("/div/div/div")).getText();
+			String price = e.findElement(By.xpath("./div/div/div")).getText();
 			System.out.println(product + " - " + price);
 		}
 		
